@@ -23,7 +23,7 @@ async def on_ready():
 
 
 @bot.command(name="help")
-async def help(ctx):
+async def guide(ctx):
     embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
     embed.add_field(name="root", value=f"```add - add options"

@@ -24,7 +24,7 @@ async def on_ready():
 
 @bot.command(name="guide")
 async def guide(ctx):
-    embed = discord.Embed(title=f"__**Commands**__", description="Commands of Tyche", color=0x03f8fc,
+    embed = discord.Embed(title=f"__**Commands**__", description="Commands of Tyche", color=0x2e99dc,
                           timestamp=ctx.message.created_at)
     embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
     embed.add_field(name="root", value=f'''```add - add options
@@ -159,7 +159,7 @@ async def all(ctx):
         await ctx.channel.send("```[PERMISSION ERROR] Mrs. Robinson, you're trying to seduce me. Aren't you?```")
         return
     if len(answers) != 0:
-        embed = discord.Embed(title=f"__**Answers**__", color=0x03f8fc,
+        embed = discord.Embed(title=f"__**Answers**__", color=0x2e99dc,
                               timestamp=ctx.message.created_at)
         embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
         for i in answers:

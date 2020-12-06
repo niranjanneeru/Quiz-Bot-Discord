@@ -26,22 +26,22 @@ async def on_ready():
 async def guide(ctx):
     embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
-    embed.add_field(name="root", value=f'''```add - add options"
-    syntax:- .add <Question Number> <Answer>"
-    eg:- add 1 answer"
-clear - clear options"
-    syntax:- .clear or .clear <q.no>"
-    eg:- .clear     #clears whole options"
-    eg:- .clears 1  #clears for a specific option"
-mark - set marks for a question"
-    syntax:- .mark <Question Number> <Mark>"
-    eg:- .mark 1 45"
-all - view all options"
-    eg:- .all"
-score - view scoreboard"
+    embed.add_field(name="root", value=f'''```add - add options
+    syntax:- .add <Question Number> <Answer>
+    eg:- add 1 answer
+clear - clear options
+    syntax:- .clear or .clear <q.no>
+    eg:- .clear     #clears whole options
+    eg:- .clears 1  #clears for a specific option
+mark - set marks for a question
+    syntax:- .mark <Question Number> <Mark>
+    eg:- .mark 1 45
+all - view all options
+    eg:- .all
+score - view scoreboard
     eg:- .all```''', inline=False)
-    embed.add_field(name="user", value=f'''```answer - answer a question"
-    syntax:- .answer <Question Number> <Answer>"
+    embed.add_field(name="user", value=f'''```answer - answer a question
+    syntax:- .answer <Question Number> <Answer>
     eg:- .answer 1 answer```''', inline=False)
     await ctx.channel.send(embed=embed)
 

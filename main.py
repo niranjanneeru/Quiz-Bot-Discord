@@ -163,7 +163,8 @@ async def all(ctx):
                               timestamp=ctx.message.created_at)
         embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
         for i in answers:
-            embed.add_field(name=i, value=f'> {",".join(answers[i]["valid"])} - {answers[i]["marks"]}', inline=False)
+            embed.add_field(name=i, value=f'``` {",".join(answers[i]["valid"])} - {answers[i]["marks"]}```',
+                            inline=False)
         await ctx.channel.send(embed=embed)
     else:
         await ctx.channel.send("```[EMPTY] Answer Set```")
@@ -178,7 +179,7 @@ async def score(ctx):
                           timestamp=ctx.message.created_at)
     embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
     for entry in scoreboard:
-        embed.add_field(name=entry.upper(), value=f">``` Coins: {scoreboard[entry]['points']}```", inline=False)
+        embed.add_field(name=entry.upper(), value=f"``` Coins: {scoreboard[entry]['points']}```", inline=False)
     await ctx.channel.send(embed=embed)
 
 

@@ -22,6 +22,30 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=discord.Game("Hasta la vista, baby"))
 
 
+@bot.command(name="help")
+async def help(ctx):
+    embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
+                          timestamp=ctx.message.created_at)
+    embed.add_field(name="root", value=f"```add - add options"
+                                       f"   syntax:- .add <Question Number> <Answer>"
+                                       f"   eg:- add 1 answer"
+                                       f"clear - clear options"
+                                       f"   syntax:- .clear or .clear <q.no>"
+                                       f"   eg:- .clear     #clears whole options"
+                                       f"   eg:- .clears 1  #clears for a specific option"
+                                       f"mark - set marks for a question"
+                                       f"   syntax:- .mark <Question Number> <Mark>"
+                                       f"   eg:- .mark 1 45"
+                                       f"all - view all options"
+                                       f"   eg:- .all"
+                                       f"score - view scoreboard"
+                                       f"   eg:- .all```", inline=False)
+    embed.add_field(name="user", value=f"```answer - answer a question"
+                                       f"   syntax:- .answer <Question Number> <Answer>"
+                                       f"   eg:- .answer 1 answer```", inline=False)
+    await ctx.channel.send(embed=embed)
+
+
 @bot.command(name="add")
 async def add(ctx, x, y):
     if ctx.message.author.id not in super_users:

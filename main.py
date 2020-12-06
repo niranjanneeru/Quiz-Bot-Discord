@@ -26,6 +26,7 @@ async def on_ready():
 async def guide(ctx):
     embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
+    embed.set_image(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
     embed.add_field(name="root", value=f'''```add - add options
         syntax:- .add <Question Number> <Answer>
         eg:- add 1 answer

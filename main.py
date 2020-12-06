@@ -22,7 +22,7 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=discord.Game("Hasta la vista, baby"))
 
 
-@bot.command(name="help")
+@bot.command(name="guide")
 async def guide(ctx):
     embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)

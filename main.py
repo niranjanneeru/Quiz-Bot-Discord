@@ -29,7 +29,7 @@ async def guide(ctx):
     embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
     embed.add_field(name="root", value=f'''```add - add options
         syntax:- .add <Question Number> <Answer>
-        eg:- add 1 answer
+        eg:- .add 1 answer
 
 clear - clear options
         syntax:- .clear or .clear <q.no>

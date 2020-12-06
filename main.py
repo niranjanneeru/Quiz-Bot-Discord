@@ -26,7 +26,7 @@ async def on_ready():
 async def guide(ctx):
     embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
-    embed.set_image(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
+    embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
     embed.add_field(name="root", value=f'''```add - add options
         syntax:- .add <Question Number> <Answer>
         eg:- add 1 answer
@@ -161,6 +161,7 @@ async def all(ctx):
     if len(answers) != 0:
         embed = discord.Embed(title=f"__**Answers**__", color=0x03f8fc,
                               timestamp=ctx.message.created_at)
+        embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
         for i in answers:
             embed.add_field(name=i, value=f'> {",".join(answers[i]["valid"])} - {answers[i]["marks"]}', inline=False)
         await ctx.channel.send(embed=embed)
@@ -175,6 +176,7 @@ async def score(ctx):
         return
     embed = discord.Embed(title=f"__**Scoreboard**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
+    embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
     for entry in scoreboard:
         embed.add_field(name=entry.upper(), value=f"> Coins: {scoreboard[entry]['points']}", inline=False)
     await ctx.channel.send(embed=embed)

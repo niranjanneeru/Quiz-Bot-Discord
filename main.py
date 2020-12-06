@@ -130,7 +130,7 @@ async def answer(ctx, x, y):
                 scoreboard[ctx.channel.name]['attended'].append(q)
                 scoreboard[ctx.channel.name]['points'] += answers[q]['marks']
                 r = randint(0, len(correct_list) - 1)
-                await ctx.channel.send(f"```[CORRECT] {correct_list[r]}! +{answers[q]['marks']} points```")
+                await ctx.channel.send(f"```[CORRECT] {correct_list[r]}! +{answers[q]['marks']} Coins```")
             else:
                 r = randint(0, len(wrong_list) - 1)
                 await ctx.channel.send(f"```[WRONG] {wrong_list[r]}!```")
@@ -171,7 +171,7 @@ async def score(ctx):
     embed = discord.Embed(title=f"__**Scoreboard**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
     for entry in scoreboard:
-        embed.add_field(name=entry.upper(), value=f"> points: {scoreboard[entry]['points']}", inline=False)
+        embed.add_field(name=entry.upper(), value=f"> Coins: {scoreboard[entry]['points']}", inline=False)
     await ctx.channel.send(embed=embed)
 
 

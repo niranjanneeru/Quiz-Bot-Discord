@@ -47,16 +47,16 @@ score - view scoreboard
 
 
 @bot.command(name="add")
-async def add(ctx, x, y):
+async def add(ctx, q_no, answer):
     if ctx.message.author.id not in super_users:
         await ctx.channel.send("```[PERMISSION ERROR] Mrs. Robinson, you're trying to seduce me. Aren't you?```")
         return
     try:
-        q = int(x)
+        q = int(q_no)
         if q in answers:
-            answers[q]['valid'].append(y.lower())
+            answers[q]['valid'].append(answer.lower())
         else:
-            answers[q] = {"valid": [y.lower(), ], "marks": 20}
+            answers[q] = {"valid": [answer.lower(), ], "marks": 20}
         for i in tries:
             tries[i]['tries'][q] = 3
         await ctx.channel.send("```[PASSED] Answer Added```")
@@ -157,7 +157,7 @@ async def all(ctx):
         embed = discord.Embed(title=f"__**Answers**__", color=0x03f8fc,
                               timestamp=ctx.message.created_at)
         for i in answers:
-            embed.add_field(name=i, value=f'>{",".join(answers[i]["valid"])} - {answers[i]["marks"]}', inline=False)
+            embed.add_field(name=i, value=f'> {",".join(answers[i]["valid"])} - {answers[i]["marks"]}', inline=False)
         await ctx.channel.send(embed=embed)
     else:
         await ctx.channel.send("```[EMPTY] Answer Set```")
@@ -171,7 +171,7 @@ async def score(ctx):
     embed = discord.Embed(title=f"__**Scoreboard**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
     for entry in scoreboard:
-        embed.add_field(name=entry.upper(), value=f"points: {scoreboard[entry]['points']}", inline=False)
+        embed.add_field(name=entry.upper(), value=f"> points: {scoreboard[entry]['points']}", inline=False)
     await ctx.channel.send(embed=embed)
 
 

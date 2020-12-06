@@ -181,7 +181,7 @@ async def score(ctx):
     flag = 0
     inline = True
     for entry in scoreboard:
-        if flag == 3:
+        if flag == 2:
             flag = 0
             inline = False
         else:

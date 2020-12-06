@@ -30,9 +30,9 @@ async def add(ctx, x, y):
     try:
         q = int(x)
         if q in answers:
-            answers[q]['valid'].append(y)
+            answers[q]['valid'].append(y.lower())
         else:
-            answers[q] = {"valid": [y, ], "marks": 20}
+            answers[q] = {"valid": [y.lower(), ], "marks": 20}
         for i in tries:
             tries[i]['tries'][q] = 3
         await ctx.channel.send("```[PASSED] Answer Added```")
@@ -102,7 +102,7 @@ async def answer(ctx, x, y):
                 r = randint(0, len(wrong_list) - 1)
                 await ctx.channel.send(f"```[TRIES EXHAUSTED] {wrong_list[r]}!```")
                 return
-            if y in answers[q]['valid']:
+            if y.lower() in answers[q]['valid']:
                 scoreboard[ctx.channel.name]['attended'].append(q)
                 scoreboard[ctx.channel.name]['points'] += answers[q]['marks']
                 r = randint(0, len(correct_list) - 1)

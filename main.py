@@ -185,7 +185,7 @@ async def score(ctx):
             flag = 0
             inline = False
         else:
-            inline = False
+            inline = True
         embed.add_field(name=entry.upper(), value=f"``` Coins: {scoreboard[entry]['points']}```", inline=inline)
         flag += 1
     await ctx.channel.send(embed=embed)

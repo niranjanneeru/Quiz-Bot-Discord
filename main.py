@@ -178,16 +178,16 @@ async def score(ctx):
     embed = discord.Embed(title=f"__**Scoreboard**__", description="Pretty Formatted", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
     embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
-    flag = 0
+    # flag = 0
     inline = True
     for entry in scoreboard:
-        if flag == 2:
-            flag = 0
-            inline = False
-        else:
-            inline = True
+        # if flag == 2:
+        #     flag = 0
+        #     inline = False
+        # else:
+        #     inline = True
         embed.add_field(name=entry.upper(), value=f"``` Coins: {scoreboard[entry]['points']}```", inline=inline)
-        flag += 1
+        # flag += 1
     await ctx.channel.send(embed=embed)
 
 

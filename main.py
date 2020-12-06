@@ -34,7 +34,7 @@ async def guide(ctx):
 clear - clear options
         syntax:- .clear or .clear <q.no>
         eg:- .clear     #clears whole options
-        eg:- .clears 1  #clears for a specific option
+        eg:- .clears 1  #clear a option
 
 mark - set marks for a question
         syntax:- .mark <Question Number> <Mark>

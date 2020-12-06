@@ -26,23 +26,23 @@ async def on_ready():
 async def guide(ctx):
     embed = discord.Embed(title=f"__**Commands**__", color=0x03f8fc,
                           timestamp=ctx.message.created_at)
-    embed.add_field(name="root", value=f"```add - add options"
-                                       f"   syntax:- .add <Question Number> <Answer>"
-                                       f"   eg:- add 1 answer"
-                                       f"clear - clear options"
-                                       f"   syntax:- .clear or .clear <q.no>"
-                                       f"   eg:- .clear     #clears whole options"
-                                       f"   eg:- .clears 1  #clears for a specific option"
-                                       f"mark - set marks for a question"
-                                       f"   syntax:- .mark <Question Number> <Mark>"
-                                       f"   eg:- .mark 1 45"
-                                       f"all - view all options"
-                                       f"   eg:- .all"
-                                       f"score - view scoreboard"
-                                       f"   eg:- .all```", inline=False)
-    embed.add_field(name="user", value=f"```answer - answer a question"
-                                       f"   syntax:- .answer <Question Number> <Answer>"
-                                       f"   eg:- .answer 1 answer```", inline=False)
+    embed.add_field(name="root", value=f'''```add - add options"
+    syntax:- .add <Question Number> <Answer>"
+    eg:- add 1 answer"
+clear - clear options"
+    syntax:- .clear or .clear <q.no>"
+    eg:- .clear     #clears whole options"
+    eg:- .clears 1  #clears for a specific option"
+mark - set marks for a question"
+    syntax:- .mark <Question Number> <Mark>"
+    eg:- .mark 1 45"
+all - view all options"
+    eg:- .all"
+score - view scoreboard"
+    eg:- .all```''', inline=False)
+    embed.add_field(name="user", value=f'''```answer - answer a question"
+    syntax:- .answer <Question Number> <Answer>"
+    eg:- .answer 1 answer```''', inline=False)
     await ctx.channel.send(embed=embed)
 
 

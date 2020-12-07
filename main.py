@@ -63,7 +63,7 @@ async def add(ctx, q_no, answer):
         else:
             answers[q] = {"valid": [answer.lower(), ], "marks": 20}
         for i in tries:
-            tries[i]['tries'][q] = 3
+            tries[i]['tries'][q] = 5
         await ctx.channel.send("```[PASSED] Answer Added```")
     except:
         raise commands.errors.BadArgument

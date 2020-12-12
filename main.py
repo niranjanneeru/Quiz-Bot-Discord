@@ -203,7 +203,7 @@ async def broadcast(ctx, *args):
         return
     message = ' '.join(args)
     for i in team_names:
-        await bot.get_channel(team_names[i]).send(f"```[LINK :- BROADCAST]```{message}")
+        await bot.get_channel(team_names[i]).send(f"```[LINK BROADCAST]  Author:- {ctx.message.author.name} ```{message}")
 
 
 @bot.command(name='broadcast')

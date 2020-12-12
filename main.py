@@ -43,9 +43,9 @@ score - view scoreboard
 broadcast - .broadcast message
 
 links - .links link```''', inline=False)
-    # embed.add_field(name="user", value=f'''```answer - answer a question
-    #     syntax:- .answer <Question Number> <Answer>
-    #     eg:- .answer 1 answer```''', inline=False)
+    embed.add_field(name="user", value=f'''```answer - answer a question
+        syntax:- .answer <Question Number> <Answer>
+        eg:- .answer 1 answer```''', inline=False)
     await ctx.channel.send(embed=embed)
 
 

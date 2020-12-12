@@ -22,18 +22,18 @@ teams = [
 ]
 
 team_name = [
-    'january',
-    'february',
-    'march',
-    'april',
-    'may',
-    'june',
-    'july',
-    'august',
-    'september',
-    'october',
-    'november',
-    'december'
+    'Zeus',
+    'kratos',
+    'Kronos',
+    'apollo',
+    'Ares',
+    'Cyclop',
+    'Hercules',
+    'Orion',
+    'Hades',
+    'Perseus',
+    'Poseidon',
+    'Hector',
 ]
 
 super_users = [755703395989585942, 743472398896070657]

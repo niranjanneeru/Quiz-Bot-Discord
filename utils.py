@@ -22,18 +22,18 @@ teams = [
 ]
 
 team_name = [
-    'Zeus',
+    'zeus',
     'kratos',
-    'Kronos',
+    'kronos',
     'apollo',
     'Ares',
-    'Cyclop',
-    'Hercules',
-    'Orion',
-    'Hades',
-    'Perseus',
-    'Poseidon',
-    'Hector',
+    'cyclop',
+    'hercules',
+    'orion',
+    'hades',
+    'perseus',
+    'poseidon',
+    'hector',
 ]
 
 super_users = [755703395989585942, 743472398896070657]

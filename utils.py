@@ -22,18 +22,17 @@ teams = [
 ]
 
 team_name = [
-    'apollo',
-    'ares',
-    'cyclops',
-    'hades',
-    'Hector',
-    'hercules',
-    'kratos',
-    'kronos',
-    'orion',
-    'perseus',
-    'poseidon',
-    'zeus',
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'november',
+    'december'
 ]
 
 super_users = [755703395989585942, 743472398896070657]
@@ -44,6 +43,13 @@ def get_teams():
     for i in range(len(teams)):
         names[team_name[i]] = teams[i]
     return names
+
+
+def make_tries():
+    tr = {}
+    for i in teams:
+        tr[i] = {'tries': {}}
+    return tr
 
 
 def make_scoreboard():

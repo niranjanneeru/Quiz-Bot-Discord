@@ -3,14 +3,14 @@ from random import randint
 import discord
 from discord.ext import commands
 
-from utils import make_scoreboard, super_users, get_teams, worst_list
+from utils import make_scoreboard, super_users, get_teams, worst_list, make_tries, correct_list, wrong_list, teams
 
 with open('secret.txt') as file:
     TOKEN = file.read().strip()
 
 bot = commands.Bot(command_prefix='.')
 
-# tries = make_tries()
+tries = make_tries()
 team_names = get_teams()
 
 scoreboard = make_scoreboard()
@@ -108,76 +108,76 @@ async def clear_error(ctx, error):
         await ctx.channel.send("```[MISSING ARGS] .clear```")
 
 
-# @bot.command(name="mark")
-# async def mark(ctx, x, y):
-#     if ctx.message.author.id not in super_users:
-#         await ctx.channel.send("```[PERMISSION ERROR] Mrs. Robinson, you're trying to seduce me. Aren't you?```")
-#         return
-#     try:
-#         answers[int(x)]['marks'] = int(y)
-#         await ctx.channel.send(f"```[PASSED] Mark -> {y}```")
-#     except:
-#         raise commands.errors.BadArgument
+@bot.command(name="mark")
+async def mark(ctx, x, y):
+    if ctx.message.author.id not in super_users:
+        await ctx.channel.send("```[PERMISSION ERROR] Mrs. Robinson, you're trying to seduce me. Aren't you?```")
+        return
+    try:
+        answers[int(x)]['marks'] = int(y)
+        await ctx.channel.send(f"```[PASSED] Mark -> {y}```")
+    except:
+        raise commands.errors.BadArgument
 
 
-# @mark.error
-# async def mark_error(ctx, error):
-#     if isinstance(error, commands.errors.MissingRequiredArgument):
-#         await ctx.channel.send("```[MISSING ARGS] .mark <Question Number> <Mark>```")
-#     elif isinstance(error, commands.errors.BadArgument):
-#         await ctx.channel.send("```[INVALID ARGS TYPE] int int```")
+@mark.error
+async def mark_error(ctx, error):
+    if isinstance(error, commands.errors.MissingRequiredArgument):
+        await ctx.channel.send("```[MISSING ARGS] .mark <Question Number> <Mark>```")
+    elif isinstance(error, commands.errors.BadArgument):
+        await ctx.channel.send("```[INVALID ARGS TYPE] int int```")
 
 
-# @bot.command(name="answer")
-# async def answer(ctx, x, y):
-#     if ctx.channel.name in teams:
-#         try:
-#             q = int(x)
-#             if q in scoreboard[ctx.channel.name]['attended']:
-#                 r = randint(0, len(worst_list) - 1)
-#                 await ctx.channel.send(f"```[MULTIPLE ATTEMPTS ERROR] {worst_list[r]}!```")
-#                 return
-#             if tries[ctx.channel.name]['tries'][q] == 0:
-#                 r = randint(0, len(wrong_list) - 1)
-#                 await ctx.channel.send(f"```[TRIES EXHAUSTED] {wrong_list[r]}!```")
-#                 return
-#             if y.lower() in answers[q]['valid']:
-#                 scoreboard[ctx.channel.name]['attended'].append(q)
-#                 scoreboard[ctx.channel.name]['points'] += answers[q]['marks']
-#                 r = randint(0, len(correct_list) - 1)
-#                 await ctx.channel.send(f"```[CORRECT] {correct_list[r]}! +{answers[q]['marks']} Coins```")
-#             else:
-#                 r = randint(0, len(wrong_list) - 1)
-#                 await ctx.channel.send(f"```[WRONG] {wrong_list[r]}!```")
-#             tries[ctx.channel.name]['tries'][q] -= 1
-#         except:
-#             r = randint(0, len(wrong_list) - 1)
-#             await ctx.channel.send(f"```[INVALID QUESTION] {wrong_list[r]}!```")
-#
-#
-# @answer.error
-# async def answer_error(ctx, error):
-#     if isinstance(error, commands.errors.MissingRequiredArgument):
-#         await ctx.channel.send("```[MISSING ARGS] .answer <Question Number> <Answer>```")
-#     elif isinstance(error, commands.errors.BadArgument):
-#         await ctx.channel.send("```[INVALID ARGS TYPE] int string```")
+@bot.command(name="answer")
+async def answer(ctx, x, y):
+    if ctx.channel.name in teams:
+        try:
+            q = int(x)
+            if q in scoreboard[ctx.channel.name]['attended']:
+                r = randint(0, len(worst_list) - 1)
+                await ctx.channel.send(f"```[MULTIPLE ATTEMPTS ERROR] {worst_list[r]}!```")
+                return
+            if tries[ctx.channel.name]['tries'][q] == 0:
+                r = randint(0, len(wrong_list) - 1)
+                await ctx.channel.send(f"```[TRIES EXHAUSTED] {wrong_list[r]}!```")
+                return
+            if y.lower() in answers[q]['valid']:
+                scoreboard[ctx.channel.name]['attended'].append(q)
+                scoreboard[ctx.channel.name]['points'] += answers[q]['marks']
+                r = randint(0, len(correct_list) - 1)
+                await ctx.channel.send(f"```[CORRECT] {correct_list[r]}! +{answers[q]['marks']} Coins```")
+            else:
+                r = randint(0, len(wrong_list) - 1)
+                await ctx.channel.send(f"```[WRONG] {wrong_list[r]}!```")
+            tries[ctx.channel.name]['tries'][q] -= 1
+        except:
+            r = randint(0, len(wrong_list) - 1)
+            await ctx.channel.send(f"```[INVALID QUESTION] {wrong_list[r]}!```")
 
 
-# @bot.command(name="all")
-# async def all(ctx):
-#     if ctx.message.author.id not in super_users:
-#         await ctx.channel.send("```[PERMISSION ERROR] Mrs. Robinson, you're trying to seduce me. Aren't you?```")
-#         return
-#     if len(answers) != 0:
-#         embed = discord.Embed(title=f"__**Answers**__", color=0x2e99dc,
-#                               timestamp=ctx.message.created_at)
-#         embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
-#         for i in answers:
-#             embed.add_field(name=i, value=f'``` {",".join(answers[i]["valid"])} - {answers[i]["marks"]}```',
-#                             inline=False)
-#         await ctx.channel.send(embed=embed)
-#     else:
-#         await ctx.channel.send("```[EMPTY] Answer Set```")
+@answer.error
+async def answer_error(ctx, error):
+    if isinstance(error, commands.errors.MissingRequiredArgument):
+        await ctx.channel.send("```[MISSING ARGS] .answer <Question Number> <Answer>```")
+    elif isinstance(error, commands.errors.BadArgument):
+        await ctx.channel.send("```[INVALID ARGS TYPE] int string```")
+
+
+@bot.command(name="all")
+async def all(ctx):
+    if ctx.message.author.id not in super_users:
+        await ctx.channel.send("```[PERMISSION ERROR] Mrs. Robinson, you're trying to seduce me. Aren't you?```")
+        return
+    if len(answers) != 0:
+        embed = discord.Embed(title=f"__**Answers**__", color=0x2e99dc,
+                              timestamp=ctx.message.created_at)
+        embed.set_thumbnail(url="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg")
+        for i in answers:
+            embed.add_field(name=i, value=f'``` {",".join(answers[i]["valid"])} - {answers[i]["marks"]}```',
+                            inline=False)
+        await ctx.channel.send(embed=embed)
+    else:
+        await ctx.channel.send("```[EMPTY] Answer Set```")
 
 
 @bot.command(name='score')
@@ -203,7 +203,8 @@ async def broadcast(ctx, *args):
         return
     message = ' '.join(args)
     for i in team_names:
-        await bot.get_channel(team_names[i]).send(f"```[LINK BROADCAST]  Author:- {ctx.message.author.name} ```{message}")
+        await bot.get_channel(team_names[i]).send(
+            f"```[LINK BROADCAST]  Author:- {ctx.message.author.name} ```{message}")
 
 
 @bot.command(name='broadcast')
